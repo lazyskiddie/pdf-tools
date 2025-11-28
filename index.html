@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="">
+    <meta name="description" content="A comprehensive PDF editor offering tools to merge, split, compress, and convert PDFs to various formats.">
+    <meta name="keywords" content="PDF, Merge PDF, Split PDF, Compress PDF, PDF to Word, PDF to PowerPoint, PDF to Excel, Word to PDF, PowerPoint to PDF, Excel to PDF, Password protect PDF">
+    <meta name="description" content="Free online PDF editor with tools like merge PDF, split PDF, compress PDF, convert PDF to Word, Excel, PowerPoint, and protect PDFs with password. Fast, secure & easy to use.">
+    <meta name="keywords" content="PDF editor, merge pdf, split pdf, compress pdf, pdf to word, word to pdf, pdf tools, online pdf editor, combine pdf, free pdf converter">
+
+    <!-- Open Graph SEO (for Facebook, LinkedIn, WhatsApp) -->
+    <meta property="og:title" content="Free Online PDF Editor - Merge, Split, Compress & Convert PDFs">
+    <meta property="og:description" content="Use our free online PDF tools to merge, split, compress, convert, and protect PDFs easily. No installation required!">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourwebsite.com/">
+    <meta property="og:image" content="https://yourwebsite.com/thumbnail.png">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Free Online PDF Editor">
+    <meta name="twitter:description" content="Fast & secure PDF merge, split, compress and conversion tools. 100% free!">
+    <meta name="twitter:image" content="https://yourwebsite.com/thumbnail.png">
+
+    <!-- Structured Data (Schema.org SEO) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "My PDF Editor",
+      "url": "https://yourwebsite.com/",
+      "description": "Free online PDF editor offering merge, split, compress, protect, and convert tools.",
+      "applicationCategory": "Utility",
+      "operatingSystem": "Any",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    }
+    </script>
+    <title>My PDF Editor - Merge Tool</title>
+    <style>
+        .header {
+            background-color: white;
+            border: 1.5px solid #0015ff;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            color: #0015ff;
+            padding: 12px;
+            text-align: center;
+            margin: 0px;
+        }
+        .header h2 {
+            margin: 10px;
+            background: linear-gradient(45deg, #0015ff, #ee0979);
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent;
+
+        }
+
+        .body {
+            background-color: white;
+        }
+        .title {
+            text-align: center;
+            margin-top: 20px;
+            font-family: Arial, sans-serif;
+            font-size: 20px;
+        }
+
+        .pdf {
+            max-width: 1400px;
+            margin: 40px auto;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            background-color: white;
+            margin-top: 5px;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+        }
+        .card {
+            /* background: #98d9e5; */
+            text-align: center;
+            padding: 32px;
+            border-radius: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            transition: 0.2s;
+            position: relative;
+            margin-top: 15px;
+            margin-left: 10px;
+            border: 2px solid #0015ff;
+        }
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.12);
+        }
+        .icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+        .split-container {
+            margin-left: 10px;
+            margin-right: 400px; 
+            padding: 10px; 
+            border: 1px solid #ccc; 
+            border-radius: 8px;
+
+        }
+        input[type="file"] { 
+            margin-bottom: 20px; 
+            padding: 10px; 
+            border: 1px solid #ddd; 
+            border-radius: 4px; 
+            display: block; 
+            width: 100%; 
+            box-sizing: border-box;
+        }
+        button { 
+            background-color: #e32636; 
+            color: white; 
+            padding: 12px 20px; 
+            border: none; 
+            border-radius: 4px; 
+            cursor: pointer; 
+            font-size: 16px; 
+            transition: background-color 0.3s; 
+        }
+        button:hover { 
+            background-color: #c91f2c; 
+        }
+        #message { 
+            margin-top: 20px; 
+            font-weight: bold; 
+            color: green; 
+        }
+        #error { 
+            margin-top: 20px; 
+            font-weight: bold; 
+            color: red; 
+        }
+        .footer {
+            background-color: rgb(20, 108, 114);
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            margin-top: 1px;
+        }
+    </style>
+</head>
+<body>
+    <section class="header">
+        <h2>My PDF Editor</h2>
+    </section>
+
+    <section class="title">
+        <h1> All of Your PDF Needs At One Place</h1>
+    </section>
+
+    <section class="pdf">
+        <div class="card">
+            <div class="icon">🔀</div>
+            <h2>Merge PDF</h2>
+            <p>Combine PDFs in the order you want with the easiest PDF merger available.</p>
+        </div>
+
+        <div class="card">
+            <div class="icon">✂️</div>
+            <h2>Split PDF</h2>
+            <p>Separate one page or a whole set for easy conversion into independent PDF files.</p>
+        </div>
+
+        <div class="card">
+            <div class="icon">📦</div>
+            <h2>Compress PDF</h2>
+            <p>Reduce file size while optimizing for maximal PDF quality.</p>
+        </div>
+
+        <div class="card">
+            <div class="icon">📝</div>
+            <h2>PDF to Word</h2>
+            <p>Easily convert your PDF files into editable DOC and DOCX documents.</p>
+        </div>
+
+        <div class="card">
+            <div class="icon">📊</div>
+            <h2>PDF to PowerPoint</h2>
+            <p>Turn your PDF files into easy-to-edit PPT and PPTX slideshows.</p>
+        </div>
+
+        <div class="card">
+            <div class="icon">📗</div>
+            <h2>PDF to Excel</h2>
+            <p>Pull data straight from PDFs into Excel spreadsheets in a few seconds.</p>
+        </div>
+
+        <div class="card">
+            <div class="icon">📄</div>
+            <h2>Word to PDF</h2>
+            <p>Make DOC and DOCX files easy to read by converting them to PDF.</p>
+        </div>
+
+        <div class="card">
+            <div class="icon">📽️</div>
+            <h2>PowerPoint to PDF</h2>
+            <p>Make PPT and PPTX slideshows easy to view by converting them to PDF.</p>
+        </div>
+
+        <div class="card">
+            <div class="icon">📉</div>
+            <h2>Excel to PDF</h2>
+            <p>Make Excel spreadsheets easy to read by converting them to PDF.</p>
+        </div>
+        <div class="card">
+            <div class="icon">🔒</div>
+            <h2>Password protect PDF</h2>
+            <p>Secure your PDFs with passwords and permissions to control access and editing.</p>
+        </div>
+    </section>
+
+    <script>
+        /*
+        Multi-step flow for each PDF tool:
+        1) Tool list (your existing view)
+        2) Upload view (asks for files / password if needed)
+        3) Processing view (spinner + status)
+        4) Download view (button to download processed file)
+        */
+
+        // Map tool name -> backend endpoint and accept types and whether multiple files allowed
+        const TOOL_CONFIG = {
+        "Merge PDF": { api: "/api/merge", accept: ".pdf", multiple: true, outName: "merged.pdf" },
+        "Split PDF": { api: "/api/split", accept: ".pdf", multiple: false, outName: "split.zip" },
+        "Compress PDF": { api: "/api/compress", accept: ".pdf", multiple: false, outName: "compressed.pdf" },
+        "PDF to Word": { api: "/api/pdf-to-word", accept: ".pdf", multiple: false, outName: "converted.docx" },
+        "PDF to PowerPoint": { api: "/api/pdf-to-ppt", accept: ".pdf", multiple: false, outName: "converted.pptx" },
+        "PDF to Excel": { api: "/api/pdf-to-excel", accept: ".pdf", multiple: false, outName: "converted.xlsx" },
+        "Word to PDF": { api: "/api/word-to-pdf", accept: ".doc,.docx", multiple: false, outName: "converted.pdf" },
+        "PowerPoint to PDF": { api: "/api/ppt-to-pdf", accept: ".ppt,.pptx", multiple: false, outName: "converted.pdf" },
+        "Excel to PDF": { api: "/api/excel-to-pdf", accept: ".xls,.xlsx", multiple: false, outName: "converted.pdf" },
+        "Password protect PDF": { api: "/api/protect", accept: ".pdf", multiple: false, outName: "secured.pdf", needsPassword: true }
+        };
+
+        // create and insert the step views (upload, processing, download)
+        const root = document.body;
+
+        // Create a simple overlay container that'll host "pages"
+        const appContainer = document.createElement('div');
+        appContainer.id = 'pdf-app-container';
+        appContainer.style.minHeight = '400px';
+        appContainer.style.padding = '20px';
+        appContainer.style.boxSizing = 'border-box';
+        root.insertBefore(appContainer, root.querySelector('.footer'));
+
+        // Helper: clear container
+        function clearApp() {
+        appContainer.innerHTML = '';
+        }
+
+        // Helper: go back to main tool grid
+        function showMainGrid() {
+        // Show original .pdf section and header/title; hide the app container content
+        document.querySelector('.pdf').style.display = '';
+        document.querySelector('.title').style.display = '';
+        clearApp();
+        }
+
+        // Listen card clicks and route to upload page
+        document.querySelectorAll('.card').forEach(card => {
+        card.style.cursor = 'pointer';
+        card.addEventListener('click', () => {
+            const toolName = card.querySelector('h3').innerText.trim();
+            const cfg = TOOL_CONFIG[toolName];
+            if (!cfg) {
+            alert('This tool is not configured yet.');
+            return;
+            }
+            openUploadPage(toolName, cfg);
+        });
+        });
+
+        // Build upload page
+        function openUploadPage(toolName, cfg) {
+        // Hide main grid to simulate a "new page"
+        document.querySelector('.pdf').style.display = 'none';
+        document.querySelector('.title').style.display = 'none';
+        clearApp();
+
+        const page = document.createElement('div');
+        page.className = 'upload-page';
+
+        const backBtn = createButton('← Back', () => showMainGrid());
+        backBtn.style.marginBottom = '12px';
+
+        const heading = document.createElement('h2');
+        heading.innerText = toolName;
+
+        const info = document.createElement('p');
+        info.innerText = `Upload file${cfg.multiple ? 's' : ''} to process with "${toolName}"`;
+
+        const form = document.createElement('form');
+        form.enctype = 'multipart/form-data';
+
+        // file input
+        const fileInput = document.createElement('input');
+        fileInput.type = 'file';
+        fileInput.accept = cfg.accept || '.pdf';
+        fileInput.multiple = !!cfg.multiple;
+        fileInput.style.display = 'block';
+        fileInput.style.margin = '12px 0';
+        fileInput.required = true;
+
+        // password field for protect
+        let passwordInput = null;
+        if (cfg.needsPassword) {
+            const pLabel = document.createElement('label');
+            pLabel.innerText = 'Enter password to protect PDF:';
+            pLabel.style.display = 'block';
+            pLabel.style.marginTop = '10px';
+            passwordInput = document.createElement('input');
+            passwordInput.type = 'password';
+            passwordInput.placeholder = 'Password';
+            passwordInput.required = true;
+            passwordInput.style.display = 'block';
+            passwordInput.style.marginTop = '6px';
+            form.appendChild(pLabel);
+            form.appendChild(passwordInput);
+        }
+
+        // submit button
+        const submitBtn = createButton('Upload & Process', () => {
+            // validate files
+            if (!fileInput.files || fileInput.files.length === 0) {
+            alert('Please choose file(s) to upload.');
+            return;
+            }
+            // if password required but empty
+            if (cfg.needsPassword && (!passwordInput.value || passwordInput.value.trim() === '')) {
+            alert('Please enter a password.');
+            return;
+            }
+            // start processing
+            startProcessing(toolName, cfg, fileInput.files, passwordInput ? passwordInput.value : null);
+        });
+        submitBtn.style.marginTop = '12px';
+
+        form.appendChild(fileInput);
+        form.appendChild(submitBtn);
+
+        page.appendChild(backBtn);
+        page.appendChild(heading);
+        page.appendChild(info);
+        page.appendChild(form);
+
+        appContainer.appendChild(page);
+        // scroll to top for user
+        window.scrollTo(0,0);
+        }
+
+        // startProcessing: show processing view, call API, then show download view
+        async function startProcessing(toolName, cfg, files, password) {
+        clearApp();
+
+        const processingPage = document.createElement('div');
+        processingPage.className = 'processing-page';
+
+        const backBtn = createButton('← Cancel', () => {
+            // confirm cancel
+            if (confirm('Cancel processing and go back?')) {
+            showMainGrid();
+            }
+        });
+        backBtn.style.marginBottom = '12px';
+
+        const heading = document.createElement('h2');
+        heading.innerText = `${toolName} — Processing`;
+
+        const status = document.createElement('p');
+        status.innerText = 'Uploading files and processing...';
+
+        // simple spinner
+        const spinner = document.createElement('div');
+        spinner.innerText = '⏳';
+        spinner.style.fontSize = '32px';
+        spinner.style.margin = '12px 0';
+
+        processingPage.appendChild(backBtn);
+        processingPage.appendChild(heading);
+        processingPage.appendChild(status);
+        processingPage.appendChild(spinner);
+
+        // progress bar
+        const progressWrap = document.createElement('div');
+        progressWrap.style.width = '100%';
+        progressWrap.style.background = '#eee';
+        progressWrap.style.borderRadius = '6px';
+        progressWrap.style.height = '10px';
+        progressWrap.style.marginTop = '12px';
+        const progressBar = document.createElement('div');
+        progressBar.style.height = '100%';
+        progressBar.style.width = '0%';
+        progressBar.style.borderRadius = '6px';
+        progressBar.style.transition = 'width 300ms ease';
+        progressBar.style.background = '#2aa4a8';
+        progressWrap.appendChild(progressBar);
+        processingPage.appendChild(progressWrap);
+
+        appContainer.appendChild(processingPage);
+        window.scrollTo(0,0);
+
+        try {
+            // Build FormData
+            const formData = new FormData();
+            // multiple files append
+            if (cfg.multiple) {
+            Array.from(files).forEach(f => formData.append('pdfFiles', f));
+            } else {
+            formData.append('file', files[0]);
+            }
+            if (cfg.needsPassword && password) {
+            formData.append('password', password);
+            }
+
+            // Use fetch with progress if available; browser doesn't give upload progress for fetch natively.
+            // We'll do a fake progress animation while awaiting response to improve UX.
+            // Start fake progress
+            fakeProgress(progressBar);
+
+            // Call API
+            const res = await fetch(cfg.api, {
+            method: 'POST',
+            body: formData
+            });
+
+            // Stop fake progress and set to 100%
+            progressBar.style.width = '100%';
+
+            if (!res.ok) {
+            const text = await res.text();
+            showErrorPage(toolName, `Server error: ${res.status} ${res.statusText} - ${text}`);
+            return;
+            }
+
+            // Try to read blob
+            const resultBlob = await res.blob();
+
+            // Get filename from content-disposition if present
+            let filename = cfg.outName || 'result.bin';
+            const cd = res.headers.get('Content-Disposition');
+            if (cd && cd.includes('filename=')) {
+            try {
+                filename = cd.split('filename=')[1].trim();
+                filename = filename.replace(/['"]/g, ''); // clean quotes
+            } catch (e) { /* ignore */ }
+            }
+
+            // Show download page and let user click to download
+            showDownloadPage(toolName, resultBlob, filename);
+        } catch (err) {
+            console.error(err);
+            showErrorPage(toolName, 'Network error: ' + err.message);
+        }
+        }
+
+        // fake progress animation
+        function fakeProgress(bar) {
+        bar.style.width = '6%';
+        let percent = 6;
+        const id = setInterval(() => {
+            percent += Math.random() * 10; // increment variable amount
+            if (percent >= 85) {
+            percent = 85;
+            bar.style.width = percent + '%';
+            clearInterval(id);
+            } else {
+            bar.style.width = percent + '%';
+            }
+        }, 500);
+        }
+
+        // show download page
+        function showDownloadPage(toolName, blob, filename) {
+        clearApp();
+        const page = document.createElement('div');
+        page.className = 'download-page';
+
+        const backBtn = createButton('← Back to tools', () => showMainGrid());
+        backBtn.style.marginBottom = '12px';
+
+        const heading = document.createElement('h2');
+        heading.innerText = `${toolName} — Ready`;
+
+        const info = document.createElement('p');
+        info.innerText = 'Your file is ready. Click the button below to download.';
+
+        const downloadBtn = createButton('Download File', () => {
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = filename || 'result';
+            document.body.appendChild(a);
+            a.click();
+            a.remove();
+            URL.revokeObjectURL(url);
+        });
+        downloadBtn.style.marginTop = '12px';
+
+        // Preview basic info: size & filename
+        const meta = document.createElement('p');
+        meta.style.marginTop = '10px';
+        meta.innerText = `Filename: ${filename} • Size: ${formatBytes(blob.size)}`;
+
+        page.appendChild(backBtn);
+        page.appendChild(heading);
+        page.appendChild(info);
+        page.appendChild(downloadBtn);
+        page.appendChild(meta);
+
+        appContainer.appendChild(page);
+        window.scrollTo(0,0);
+        }
+
+        // show error page
+        function showErrorPage(toolName, message) {
+        clearApp();
+        const page = document.createElement('div');
+        const backBtn = createButton('← Back to tools', () => showMainGrid());
+        backBtn.style.marginBottom = '12px';
+
+        const heading = document.createElement('h2');
+        heading.innerText = `${toolName} — Error`;
+
+        const msg = document.createElement('p');
+        msg.style.color = 'red';
+        msg.innerText = message;
+
+        page.appendChild(backBtn);
+        page.appendChild(heading);
+        page.appendChild(msg);
+
+        appContainer.appendChild(page);
+        window.scrollTo(0,0);
+        }
+
+        // helper: create styled button element
+        function createButton(text, onClick) {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.innerText = text;
+        btn.onclick = onClick;
+        // copy your existing button styles quickly
+        btn.style.backgroundColor = '#e32636';
+        btn.style.color = 'white';
+        btn.style.padding = '10px 16px';
+        btn.style.border = 'none';
+        btn.style.borderRadius = '6px';
+        btn.style.cursor = 'pointer';
+        btn.style.fontSize = '15px';
+        btn.onmouseover = () => btn.style.backgroundColor = '#c91f2c';
+        btn.onmouseout = () => btn.style.backgroundColor = '#e32636';
+        return btn;
+        }
+
+        function formatBytes(bytes) {
+        if (bytes === 0) return '0 B';
+        const k = 1024;
+        const sizes = ['B','KB','MB','GB','TB'];
+        const i = Math.floor(Math.log(bytes) / Math.log(k));
+        return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+        }
+
+        // initial view ensures the app container is empty and main grid visible
+        showMainGrid();
+
+    </script>
+
+    <section class="footer">
+        <footer>
+            <h4>© 2024 PDF Merge Tool</h4>
+        </footer>
+    </section>
+</body>
+</html>
