@@ -51,13 +51,36 @@
             text-align: center;
             margin: 0px;
         }
-        .header h2 {
+        .header h1 {
+            font-weight: bold;
             margin: 10px;
             background: linear-gradient(45deg, #0015ff, #ee0979);
             -webkit-background-clip: text; 
             -webkit-text-fill-color: transparent;
 
         }
+        .live-gradient-bg {
+            width: 100%;
+            /* min-height: auto;  */
+
+            background: linear-gradient(120deg, 
+                #f6f8ff, 
+                #e8f0ff, 
+                #f4faff, 
+                #e7faff
+            );
+            
+            background-size: 300% 300%;
+            animation: gradientMove 12s ease-in-out infinite;
+        }
+
+        /* Live Gradient Animation */
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
 
         .body {
             background-color: white;
@@ -76,13 +99,13 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 25px;
-            background-color: white;
             margin-top: 5px;
             border-top-left-radius: 20px;
             border-top-right-radius: 20px;
         }
         .card {
-            /* background: #98d9e5; */
+            /* background: #98d9e5;  */
+            background: white;
             text-align: center;
             padding: 32px;
             border-radius: 20px;
@@ -153,75 +176,77 @@
     </style>
 </head>
 <body>
-    <section class="header">
-        <h2>My PDF Editor</h2>
-    </section>
+    <div class="live-gradient-bg">
+        <section class="header">
+            <h1>My PDF Editor</h1>
+        </section>
 
-    <section class="title">
-        <h1> All of Your PDF Needs At One Place</h1>
-    </section>
+        <section class="title">
+            <h1> All of Your PDF Needs At One Place</h1>
+        </section>
 
-    <section class="pdf">
-        <div class="card">
-            <div class="icon">🔀</div>
-            <h2>Merge PDF</h2>
-            <p>Combine PDFs in the order you want with the easiest PDF merger available.</p>
-        </div>
+        <section class="pdf">
+            <div class="card">
+                <div class="icon">🔀</div>
+                <h2>Merge PDF</h2>
+                <p>Combine PDFs in the order you want with the easiest PDF merger available.</p>
+            </div>
 
-        <div class="card">
-            <div class="icon">✂️</div>
-            <h2>Split PDF</h2>
-            <p>Separate one page or a whole set for easy conversion into independent PDF files.</p>
-        </div>
+            <div class="card">
+                <div class="icon">✂️</div>
+                <h2>Split PDF</h2>
+                <p>Separate one page or a whole set for easy conversion into independent PDF files.</p>
+            </div>
 
-        <div class="card">
-            <div class="icon">📦</div>
-            <h2>Compress PDF</h2>
-            <p>Reduce file size while optimizing for maximal PDF quality.</p>
-        </div>
+            <div class="card">
+                <div class="icon">📦</div>
+                <h2>Compress PDF</h2>
+                <p>Reduce file size while optimizing for maximal PDF quality.</p>
+            </div>
 
-        <div class="card">
-            <div class="icon">📝</div>
-            <h2>PDF to Word</h2>
-            <p>Easily convert your PDF files into editable DOC and DOCX documents.</p>
-        </div>
+            <div class="card">
+                <div class="icon">📝</div>
+                <h2>PDF to Word</h2>
+                <p>Easily convert your PDF files into editable DOC and DOCX documents.</p>
+            </div>
 
-        <div class="card">
-            <div class="icon">📊</div>
-            <h2>PDF to PowerPoint</h2>
-            <p>Turn your PDF files into easy-to-edit PPT and PPTX slideshows.</p>
-        </div>
+            <div class="card">
+                <div class="icon">📊</div>
+                <h2>PDF to PowerPoint</h2>
+                <p>Turn your PDF files into easy-to-edit PPT and PPTX slideshows.</p>
+            </div>
 
-        <div class="card">
-            <div class="icon">📗</div>
-            <h2>PDF to Excel</h2>
-            <p>Pull data straight from PDFs into Excel spreadsheets in a few seconds.</p>
-        </div>
+            <div class="card">
+                <div class="icon">📗</div>
+                <h2>PDF to Excel</h2>
+                <p>Pull data straight from PDFs into Excel spreadsheets in a few seconds.</p>
+            </div>
 
-        <div class="card">
-            <div class="icon">📄</div>
-            <h2>Word to PDF</h2>
-            <p>Make DOC and DOCX files easy to read by converting them to PDF.</p>
-        </div>
+            <div class="card">
+                <div class="icon">📄</div>
+                <h2>Word to PDF</h2>
+                <p>Make DOC and DOCX files easy to read by converting them to PDF.</p>
+            </div>
 
-        <div class="card">
-            <div class="icon">📽️</div>
-            <h2>PowerPoint to PDF</h2>
-            <p>Make PPT and PPTX slideshows easy to view by converting them to PDF.</p>
-        </div>
+            <div class="card">
+                <div class="icon">📽️</div>
+                <h2>PowerPoint to PDF</h2>
+                <p>Make PPT and PPTX slideshows easy to view by converting them to PDF.</p>
+            </div>
 
-        <div class="card">
-            <div class="icon">📉</div>
-            <h2>Excel to PDF</h2>
-            <p>Make Excel spreadsheets easy to read by converting them to PDF.</p>
-        </div>
-        <div class="card">
-            <div class="icon">🔒</div>
-            <h2>Password protect PDF</h2>
-            <p>Secure your PDFs with passwords and permissions to control access and editing.</p>
-        </div>
-    </section>
+            <div class="card">
+                <div class="icon">📉</div>
+                <h2>Excel to PDF</h2>
+                <p>Make Excel spreadsheets easy to read by converting them to PDF.</p>
+            </div>
+            <div class="card">
+                <div class="icon">🔒</div>
+                <h2>Password protect PDF</h2>
+                <p>Secure your PDFs with passwords and permissions to control access and editing.</p>
+            </div>
+        </section>
 
+    </div>
     <script>
         /*
         Multi-step flow for each PDF tool:
@@ -251,7 +276,7 @@
         // Create a simple overlay container that'll host "pages"
         const appContainer = document.createElement('div');
         appContainer.id = 'pdf-app-container';
-        appContainer.style.minHeight = '400px';
+        // appContainer.style.minHeight = '400px';
         appContainer.style.padding = '20px';
         appContainer.style.boxSizing = 'border-box';
         root.insertBefore(appContainer, root.querySelector('.footer'));
