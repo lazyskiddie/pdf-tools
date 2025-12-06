@@ -36,14 +36,15 @@
         "@type": "Offer",
         "price": "0",
         "priceCurrency": "USD"
+        "priceCurrency": "INR"
       }
     }
     </script>
     <title>My PDF Editor - Merge Tool</title>
     <style>
         .header {
-            background-color: white;
-            border: 1.5px solid #0015ff;
+            background-color: rgb(248, 186, 87);
+            border: 2.2px solid #0015ff;
             border-bottom-left-radius: 20px;
             border-bottom-right-radius: 20px;
             color: #0015ff;
@@ -53,8 +54,9 @@
         }
         .header h1 {
             font-weight: bold;
+            font-size: x-large;
             margin: 10px;
-            background: linear-gradient(45deg, #0015ff, #ee0979);
+            background: linear-gradient(90deg, #0015ff, #ee0979);
             -webkit-background-clip: text; 
             -webkit-text-fill-color: transparent;
 
@@ -64,10 +66,10 @@
             /* min-height: auto;  */
 
             background: linear-gradient(120deg, 
-                #f6f8ff, 
-                #e8f0ff, 
-                #f4faff, 
-                #e7faff
+                #5a7bef, 
+                #fce8ff, 
+                #7b8a97, 
+                #2eb6dc
             );
             
             background-size: 300% 300%;
@@ -80,11 +82,30 @@
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
-
-
-        .body {
+        .title{
             background-color: white;
+            border: 2px solid #0015ff;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            margin-left: 40px;
+            margin-right: 40px;
+            padding: 12px;
         }
+
+        .title h1 {
+            font-weight: bold;
+            margin: 10px;
+            background: linear-gradient(90deg, #0015ff, #ee0979);
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent;
+        }
+
+
+        /* .body {
+            background-color: white;
+        } */
         .title {
             text-align: center;
             margin-top: 20px;
@@ -115,6 +136,21 @@
             margin-top: 15px;
             margin-left: 10px;
             border: 2px solid #0015ff;
+        }
+        .card h2 {
+            font-weight: bold;
+            margin: 10px;
+            background: linear-gradient(45deg, #0d09e9, #da0b23);
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent;
+        }
+        .card p {
+            color: #555;
+            font-size: 15px;
+            line-height: 1.5;
+        }
+        .card{
+            background-color: #cff1cd;
         }
         .card:hover {
             transform: translateY(-4px);
@@ -165,9 +201,10 @@
             color: red; 
         }
         .footer {
-            background-color: rgb(20, 108, 114);
+            background-color: rgb(99, 152, 156);
             border-top-left-radius: 20px;
             border-top-right-radius: 20px;
+            border: 2px solid #0015ff;
             color: white;
             padding: 10px;
             text-align: center;
@@ -298,7 +335,7 @@
         document.querySelectorAll('.card').forEach(card => {
         card.style.cursor = 'pointer';
         card.addEventListener('click', () => {
-            const toolName = card.querySelector('h3').innerText.trim();
+            const toolName = card.querySelector('h2').innerText.trim();
             const cfg = TOOL_CONFIG[toolName];
             if (!cfg) {
             alert('This tool is not configured yet.');
